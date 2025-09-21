@@ -782,23 +782,82 @@ export const dummyProducts = [
   },
 ];
 
-export const dummyAddress = [
-  {
-    _id: "67b5b9e54ea97f71bbc196a0",
-    userId: "67b5880e4d09769c5ca61644",
-    firstName: "Great",
-    lastName: "Stack",
-    email: "user.greatstack@gmail.com",
-    street: "Street 123",
-    city: "Main City",
-    state: "New State",
-    zipcode: 123456,
-    country: "IN",
-    phone: "1234567890",
-  },
-];
+// Define address first
+const defaultAddress = {
+  _id: "67b5b9e54ea97f71bbc196a0",
+  userId: "67b5880e4d09769c5ca61644",
+  firstName: "Great",
+  lastName: "Stack",
+  email: "user.greatstack@gmail.com",
+  street: "Street 123",
+  city: "Main City",
+  state: "New State",
+  zipcode: 123456,
+  country: "IN",
+  phone: "1234567890"
+};
 
 export const dummyOrders = [
+  {
+    _id: "order_12345",
+    paymentType: "Credit Card",
+    amount: 1250,
+    status: "Delivered",
+    createdAt: "2025-09-20T10:30:00Z",
+    address: defaultAddress,
+    items: [
+      {
+        product: {
+          name: "Organic Potato",
+          category: "Vegetables",
+          image: [potato_image_1],
+          offerPrice: 25
+        },
+        quantity: 2,
+        _id: "item_001"
+      },
+      {
+        product: {
+          name: "Fresh Tomato",
+          category: "Vegetables",
+          image: [tomato_image],
+          offerPrice: 30
+        },
+        quantity: 3,
+        _id: "item_002"
+      }
+    ]
+  },
+  {
+    _id: "order_12346",
+    paymentType: "UPI",
+    amount: 750,
+    status: "Shipped",
+    createdAt: "2025-09-18T14:15:00Z",
+    address: defaultAddress,
+    items: [
+      {
+        product: {
+          name: "Amul Milk",
+          category: "Dairy",
+          image: [amul_milk_image],
+          offerPrice: 50
+        },
+        quantity: 2,
+        _id: "item_003"
+      },
+      {
+        product: {
+          name: "Brown Bread",
+          category: "Bakery",
+          image: [brown_bread_image],
+          offerPrice: 40
+        },
+        quantity: 2,
+        _id: "item_004"
+      }
+    ]
+  },
   {
     _id: "67e2589a8f87e63366786400",
     userId: "67b5880e4d09769c5ca61644",
@@ -806,16 +865,16 @@ export const dummyOrders = [
       {
         product: dummyProducts[3],
         quantity: 2,
-        _id: "67e2589a8f87e63366786401",
-      },
+        _id: "67e2589a8f87e63366786401"
+      }
     ],
     amount: 89,
-    address: dummyAddress[0],
+    address: defaultAddress,
     status: "Order Placed",
     paymentType: "Online",
     isPaid: true,
     createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
+    updatedAt: "2025-03-25T07:18:13.103Z"
   },
   {
     _id: "67e258798f87e633667863f2",
@@ -824,20 +883,23 @@ export const dummyOrders = [
       {
         product: dummyProducts[0],
         quantity: 1,
-        _id: "67e258798f87e633667863f3",
+        _id: "67e258798f87e633667863f3"
       },
       {
         product: dummyProducts[1],
         quantity: 1,
-        _id: "67e258798f87e633667863f4",
-      },
+        _id: "67e258798f87e633667863f4"
+      }
     ],
     amount: 43,
-    address: dummyAddress[0],
+    address: defaultAddress,
     status: "Order Placed",
     paymentType: "COD",
     isPaid: false,
     createdAt: "2025-03-25T07:17:13.068Z",
-    updatedAt: "2025-03-25T07:17:13.068Z",
-  },
+    updatedAt: "2025-03-25T07:17:13.068Z"
+  }
 ];
+
+// Export the default address for use in other parts of the application
+export const dummyAddress = [defaultAddress];
